@@ -24,13 +24,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ env.IMAGE }}:${{ github.sha }} \
-                       -t ${{ env.IMAGE }}:latest .
+          docker build -t ${{ env.IMAGE }}:${{ github.sha }} .
 
-      - name: Push Docker image (sha)
+      - name: Push Docker image
         run: |
           docker push ${{ env.IMAGE }}:${{ github.sha }}
-
-      - name: Push Docker image (latest)
-        run: |
-          docker push ${{ env.IMAGE }}:latest
